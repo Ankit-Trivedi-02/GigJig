@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+@font-face {
+  font-family: 'ClashGrotesk';
+  src: url('../../assets/fonts/ClashGrotesk-Variable.woff2') format('woff2'),
+    url('../../assets/fonts/ClashGrotesk-Variable.woff') format('woff'),
+    url('../../assets/fonts/ClashGrotesk-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+.container-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px 40px;
+  background-color: rgb(243, 243, 243);
+}
+
+.company-name h5 {
+  font-family: 'ClashGrotesk', sans-serif;
+  font-variation-settings: 'wght' 550;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.services {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+}
+
+
+
+.list-style {
+  font-family: "Poppins", sans-serif;
+  list-style: none;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 17px;
+  cursor: pointer;
+  transition: ease-in 0.2s ;
+}
+.list-style:hover{
+  text-decoration: underline;
+  color: #003d47;
+}
+.logo{
+  color: black;
+}
+.logo:hover{
+  color: rgb(1, 73, 189);
+}
+
+
+.social-handels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social-handels a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Another component */
+
+.getting-started-container {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  /* Adds space inside the container */
+  gap: 1.5rem;
+  /* Adds space between children */
+  text-align: center;
+}
+
+.Title {
+  background: linear-gradient(to right, #FF1CF7, #00F0FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'ClashGrotesk', sans-serif;
+  font-variation-settings: 'wght' 550;
+  font-size: 40px;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-family: 'ClashGrotesk', sans-serif;
+  font-variation-settings: 'wght' 550;
+  font-size: 34px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+p {
+  max-width: 600px;
+  font-family: 'ClashGrotesk', sans-serif;
+  font-variation-settings: 'wght' 400;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+}
+
+.sign-in-button {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+button.sign {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background-color: #cf56cbce;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.sign:hover {
+  background-color: #b13aa9;
+}
+
+
+.Design {
+  max-width: 100vw;
+  max-height: 100vh;
+
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* or 100%, or whatever you need */
+  z-index: 10;
+  /* put above other content */
+}

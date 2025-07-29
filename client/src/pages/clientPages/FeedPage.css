@@ -1,0 +1,39 @@
+.feed-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-content {
+  display: flex;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+/* Left section: ProfileCard */
+.feed-left {
+  flex: 1;
+  min-width: 250px;
+  margin-right: 20px;
+}
+
+/* Right section: PostJob + GigFinder */
+.feed-right {
+  flex: 2;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .feed-content {
+    flex-direction: column;
+  }
+
+  .feed-left,
+  .feed-right {
+    margin-right: 0;
+    width: 100%;
+  }
+}
