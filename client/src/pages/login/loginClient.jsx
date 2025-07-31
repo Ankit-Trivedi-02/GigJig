@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import './loginClient.css';
-import {NavLink} from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function LoginClient() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -15,11 +18,16 @@ function LoginClient() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Here you'd usually send data to your backend API
-    console.log('Login user:', formData);
+    try {
+      const result = await axios.post("http://localhost:3000/auth/client/login", formData)
+      console.log(result);
+      if (result.status === 200) {
+        navigate("/feed");
+      }
+    } catch (err) { console.log(err) }
+
   };
 
   return (

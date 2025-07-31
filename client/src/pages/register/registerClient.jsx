@@ -1,35 +1,75 @@
 import React, { useState } from 'react';
 import './RegisterClient.css';
-import { NavLink } from 'react-router-dom';
-import axios from 'axios'
+import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function RegisterClient() {
     const [formData, setFormData] = useState({
+        name: '',
         username: '',
         email: '',
         password: '',
-        role: "partner"
+        phone: '',
+        role: 'client',
+        location: {
+            address: '',
+            coordinates: ['', ''], // [longitude, latitude]
+        },
+        profile_image: ''
     });
 
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
-        setFormData(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
+        const { name, value } = e.target;
+
+        if (name === "longitude" || name === "latitude") {
+            setFormData(prev => ({
+                ...prev,
+                location: {
+                    ...prev.location,
+                    coordinates: name === "longitude"
+                        ? [value, prev.location.coordinates[1]]
+                        : [prev.location.coordinates[0], value]
+                }
+            }));
+        } else if (name === "address") {
+            setFormData(prev => ({
+                ...prev,
+                location: {
+                    ...prev.location,
+                    address: value
+                }
+            }));
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value
+            }));
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Here you'd usually send data to your backend API
-        const response = await axios.post("http://localhost:3000/user/register", formData);
-        console.log(response);
+        try {
+            const response = await axios.post("http://localhost:3000/auth/client/register", formData);
+            if (response.status === 201) {
+                navigate("/client/login")
+            }
+            else {
+
+            }
+        } catch (error) {
+            console.error("Registration error:", error);
+        }
     };
 
     return (
         <div className="page-view">
             <div className="register-container">
-                <h2>Client Register</h2>
+                <h2>Register</h2>
                 <form onSubmit={handleSubmit} className="register-form">
+
                     <input
                         type="text"
                         name="username"
@@ -56,7 +96,31 @@ function RegisterClient() {
                         onChange={handleChange}
                         required
                     />
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Full Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="phone"
+                        placeholder="Phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                    />
 
+                    <input
+                        type="text"
+                        name="address"
+                        placeholder="Address"
+                        value={formData.location.address}
+                        onChange={handleChange}
+                        required
+                    />
                     <button type="submit">Register</button>
                 </form>
                 <p className="register-link">

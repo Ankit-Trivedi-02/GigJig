@@ -15,9 +15,12 @@ const userSchema = new mongoose.Schema({
         require: true,
         unique: true
     },
+    password: {
+        type: String
+    },
     phone: {
-        type: Number,
-        unique: true
+        type: String,
+
     },
     role: {
         type: String,
@@ -33,11 +36,8 @@ const userSchema = new mongoose.Schema({
     },
     profile_image: {
         type: String
-    },
-    created_at: {
-        type: Date, default: Date.now
     }
-})
+}, { timestamps: true })
 
 const User = mongoose.model("user", userSchema);
 
