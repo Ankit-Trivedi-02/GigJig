@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './GigFinder.css';
 
 const dummyProfiles = [
-  { name: 'Alice', job: 'Web Developer', img: 'https://via.placeholder.com/50' },
-  { name: 'Bob', job: 'Graphic Designer', img: 'https://via.placeholder.com/50' },
-  { name: 'Charlie', job: 'SEO Specialist', img: 'https://via.placeholder.com/50' }
+  { name: 'Alice', job: 'Web Developer', img: 'https://i.pinimg.com/originals/c4/cb/37/c4cb37fb08aaf5c474b66f0d6fa146ce.jpg' },
+  { name: 'Bob', job: 'Graphic Designer', img: 'https://i.pinimg.com/736x/62/48/c9/6248c9e47b7197b8ccb2987febaf093b.jpg' },
+  { name: 'Charlie', job: 'SEO Specialist', img: 'https://i.pinimg.com/474x/bd/2b/3e/bd2b3eb5f897b1ffc023ae47c003d318.jpg' }
 ];
 
 function GigFinder() {

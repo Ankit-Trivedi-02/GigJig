@@ -1,5 +1,5 @@
 function getUser(req, res) {
-    return res.json({
+    return res.status(200).json({
         name: "Ankit Trivedi",
         email: "rum2425515@ramauniversity.ac.in",
         phone: 9026820358,

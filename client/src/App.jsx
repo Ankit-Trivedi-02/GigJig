@@ -5,6 +5,8 @@ import LandingPage from './pages/landingpage/landingPage'
 import FeedPage from './pages/clientPages/FeedPage';
 import RegisterClient from './pages/register/registerClient';
 import LoginClient from './pages/login/loginClient';
+import ProtectedRoutes from './middlewares/authentication';
+import Profile from './pages/profile/clientProfile';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,7 +17,8 @@ function App() {
         <Route path='/' element={<LandingPage />}></Route>
         <Route path='/client/register' element={<RegisterClient />}></Route>
         <Route path='/client/login' element={<LoginClient />}></Route>
-        <Route path='/feed' element={<FeedPage />}></Route>
+        <Route path='/feed' element={<ProtectedRoutes><FeedPage /></ProtectedRoutes>}></Route>
+        <Route path='/profile' element={<ProtectedRoutes><Profile /></ProtectedRoutes>}></Route>
       </Routes>
     </BrowserRouter>
   )

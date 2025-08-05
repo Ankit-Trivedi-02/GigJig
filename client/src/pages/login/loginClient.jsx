@@ -24,7 +24,13 @@ function LoginClient() {
       const result = await axios.post("http://localhost:3000/auth/client/login", formData)
       console.log(result);
       if (result.status === 200) {
-        navigate("/feed");
+        const token = result.data.token; // adjust this key if your backend uses a different name
+        if (token) {
+          localStorage.setItem("token", token); // ✅ Store token
+          navigate("/feed"); // ✅ Navigate after storing
+        } else {
+          console.error("Token not found in response");
+        }
       }
     } catch (err) { console.log(err) }
 

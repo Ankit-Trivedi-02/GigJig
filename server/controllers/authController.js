@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const { setUser } = require("../utils/auth")
 
 async function registerUser(req, res) {
     if (!req.body) {
@@ -55,7 +56,15 @@ async function loginUser(req, res) {
         if (loginData.password !== password) {
             return res.status(401).json({ status: "Wrong pass-word or email" });
         }
-        return res.status(200).json({ status: "success" })
+        const token = setUser({ _id: loginData.id, email: loginData.email })
+        return res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            path: "/",
+        })
+            .status(200)
+            .json({ status: "success", token: token })
     } catch (err) {
         console.error(err);
         return res.status(500).json({ message: "Unable to log-in " })

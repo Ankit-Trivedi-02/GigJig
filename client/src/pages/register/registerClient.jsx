@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function RegisterClient() {
+
     const [formData, setFormData] = useState({
         name: '',
         username: '',
@@ -16,7 +17,7 @@ function RegisterClient() {
             coordinates: ['', ''], // [longitude, latitude]
         },
         profile_image: ''
-    });
+    });0
 
     const navigate = useNavigate();
 
@@ -50,14 +51,30 @@ function RegisterClient() {
     };
 
     const handleSubmit = async (e) => {
+        const { password, phone, location } = formData;
+
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return;
+        }
+
+        if (!/^\d{10}$/.test(phone)) {
+            alert("Phone number must be exactly 10 digits.");
+            return;
+        }
+
+        if (location.address.length < 10) {
+            alert("Address must be at least 10 characters long.");
+            return;
+        }
         e.preventDefault();
         try {
+            if (formData.password.length < 9) {
+                window.alert("enter valid password");
+            }
             const response = await axios.post("http://localhost:3000/auth/client/register", formData);
             if (response.status === 201) {
                 navigate("/client/login")
-            }
-            else {
-
             }
         } catch (error) {
             console.error("Registration error:", error);
@@ -92,6 +109,7 @@ function RegisterClient() {
                         type="password"
                         name="password"
                         placeholder="Password"
+                        minLength={8}
                         value={formData.password}
                         onChange={handleChange}
                         required
@@ -105,9 +123,11 @@ function RegisterClient() {
                         required
                     />
                     <input
-                        type="text"
+                        type="Number"
                         name="phone"
                         placeholder="Phone"
+                        pattern="\d{10}"
+                        title="Phone number must be exactly 10 digits"
                         value={formData.phone}
                         onChange={handleChange}
                         required
@@ -117,6 +137,7 @@ function RegisterClient() {
                         type="text"
                         name="address"
                         placeholder="Address"
+                        minLength={10}
                         value={formData.location.address}
                         onChange={handleChange}
                         required

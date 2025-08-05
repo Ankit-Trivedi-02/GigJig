@@ -21,6 +21,12 @@
     flex-direction: column;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .register-form input,
 .register-form select {
     padding: 10px;
