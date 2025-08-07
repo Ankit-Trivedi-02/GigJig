@@ -5,6 +5,7 @@ import axios from "axios"
 
 function Profile() {
     const navigate = useNavigate()
+    const [canEdit, setcanEdit] = useState(false)
     const [profileData, setProfileData] = useState({
         name: '',
         email: '',
@@ -12,7 +13,7 @@ function Profile() {
         location: { address: '' }
     });
 
-    const getProfileData = async () => {
+    const getProfileData = async (e) => {
         try {
             const token = localStorage.getItem("token");
             const result = await axios.get("http://localhost:3000/user/profile", {
@@ -42,6 +43,14 @@ function Profile() {
     };
 
     const updateProfileData = async () => {
+        if (profileData.phone.length !== 10) {
+            alert("Phone must be of 10 digit")
+            return
+        }
+        if (profileData.location.address.length < 4) {
+            alert("please give valid address")
+            return
+        }
         try {
             const token = localStorage.getItem("token");
             const result = await axios.post("http://localhost:3000/user/update-profile", profileData, {
@@ -102,13 +111,15 @@ function Profile() {
                 </div>
 
                 <div className="profile-data">
-                    <input type="text" name="name" placeholder="Name" value={profileData.name} onChange={handleInputData} />
-                    <input type="email" name="email" placeholder="Email" value={profileData.email} onChange={handleInputData} />
-                    <input type="number" name="phone" placeholder="Phone Number" value={profileData.phone} onChange={handleInputData} />
-                    <input type="text" name="address" placeholder="Address" value={profileData.location.address} onChange={handleInputData} />
+                    <button type="button" className="edit-button" onClick={() => {
+                        setcanEdit((prev) => !prev)
+                    }}>{canEdit ? "Quit" : "Edit"}</button>
+                    <input type="text" name="name" placeholder="Name" value={profileData.name} onChange={handleInputData} readOnly={!canEdit} />
+                    <input type="email" name="email" placeholder="Email" value={profileData.email} readOnly />
+                    <input type="number" name="phone" placeholder="Phone Number" value={profileData.phone} onChange={handleInputData} readOnly={!canEdit} />
+                    <input type="text" name="address" placeholder="Address" value={profileData.location.address} onChange={handleInputData} readOnly={!canEdit} />
                 </div>
-
-                <button type="submit">Save Changes</button>
+                {canEdit ? <button type="submit">Save Changes</button> : <div />}
             </form>
         </div>
     )

@@ -43,8 +43,6 @@ async function updateProfile(req, res) {
             console.log("err 2")
             return res.status(404).json({ message: "No user found" });
         }
-
-        console.log(updatedUser);
         res.status(200).json({ message: "Successfully updated profile", user: updatedUser });
     } catch (error) {
         console.error("Update error:", error);

@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 const mongoUrl = process.env.MONGODB;
 const authRouter = require("./routes/authRoute")
 const userRouter = require("./routes/userRoutes")
+const jobRouter = require("./routes/jobRoutes")
 const { connectToMongoDB } = require("./connection/connectmongoDB")
 const { checkAuthenticationOfUser } = require("./middlewares/auth")
 
@@ -27,7 +28,9 @@ app.get("/", (req, res) => {
   res.json({ Status: " server started at port ", PORT: PORT })
 })
 app.use("/auth", authRouter)
-app.use("/user", checkAuthenticationOfUser , userRouter)
+app.use("/user", checkAuthenticationOfUser, userRouter)
+app.use("/job", checkAuthenticationOfUser, jobRouter)
+
 
 
 //starting server

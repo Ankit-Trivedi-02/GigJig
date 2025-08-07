@@ -10,13 +10,28 @@
 
 /* Profile box */
 .profile {
-     position: relative; /* Add this */
+    position: relative;
+    /* Add this */
     background: #ffffff;
     padding: 30px;
     border-radius: 10px;
     width: 100%;
     max-width: 500px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.edit-button {
+    width: 60px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: #3ea857;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.edit-button:hover{
+    background-color: #218838;
 }
 
 /* Profile image section */
