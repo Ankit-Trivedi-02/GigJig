@@ -4,7 +4,7 @@ const cors = require("cors")
 require("dotenv").config();
 const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 3000;
-const mongoUrl = process.env.MONGODB;
+const mongoUrl = "mongodb://127.0.0.1:27017" || process.env.MONGODB;
 const authRouter = require("./routes/authRoute")
 const userRouter = require("./routes/userRoutes")
 const jobRouter = require("./routes/jobRoutes")

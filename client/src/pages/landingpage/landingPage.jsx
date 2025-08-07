@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './landingPage.css'
 import { NavLink } from 'react-router-dom'
+import happyMan from './happyMan.png'
+import gig from './car-.png'
 
 function LandingPage() {
 
@@ -34,7 +36,7 @@ function LandingPage() {
             <div className="getting-started-container">
                 <h1 className="Title">A One Step Solution</h1>
                 <h2 className="subtitle">GET GIG JOBS</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas cumque officia, libero perferendis velit, officiis at ex corrupti excepturi, quaerat odio itaque omnis. Inventore quo similique sint dicta animi minima, dolorum pariatur labore ex totam neque dolores nam placeat laborum perferendis ullam ut non repellat excepturi quaerat aut quas porro?</p>
                 <div className="sign-in-button">
                     <NavLink to={"/client/login"}><button className="sign">Client</button></NavLink>
                     <button className="sign">Partner</button>
@@ -43,9 +45,43 @@ function LandingPage() {
 
             {/* Scroll Sections */}
             <section id="about-us" className="scroll-section">
-                <h2>About Us</h2>
-                <p>This is the About Us section with details about the company.</p>
+                <div className="about">
+                    <div className="about-detail">
+                        <h2>About Us</h2>
+                        <h3>What We Do?</h3>
+                        <p>
+                            We connect gig workers with real opportunities. Our platform is designed to help people find flexible,
+                            short-term jobs posted by individuals and businesses in need of reliable help. Whether you're looking to
+                            earn extra income or need skilled gig workers for a task, our website makes the process simple, fast, and
+                            secure. We empower gig workers by giving them access to a wide range of job listings, while enabling job
+                            posters to reach the right people quickly.
+                        </p>
+                    </div>
+                    <div className="about-image">
+                        <img src={happyMan} alt="Happy gig worker" />
+                    </div>
+                </div>
+
+                <div className="gig-partner">
+                    <img src={gig} alt="Gig work" />
+                    <p>
+                        Lorem ipsum dolor sit amet <span>jobs</span> adipisicing elit. Asperiores, eum. Magni nemo enim sint ab.
+                        Animi obcaecati tenetur illo fuga distinctio vitae mollitia voluptatum aspernatur?
+                    </p>
+                </div>
+
+                <div className="gig-partner-2">
+                    <p>
+                        Lorem ipsum dolor sit amet <span>jobs</span> adipisicing elit. Asperiores, eum. Magni nemo enim sint ab.
+                        Animi obcaecati tenetur illo fuga distinctio vitae mollitia voluptatum aspernatur?
+                    </p>
+                    <img src={gig} alt="Gig collaboration" />
+                </div>
             </section>
+
+
+
+
 
             <section id="services" className="scroll-section">
                 <h2>Services</h2>
