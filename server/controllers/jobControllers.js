@@ -16,4 +16,18 @@ async function postJob(req, res) {
     }
 }
 
-module.exports = { postJob };
+async function getJobs(req, res) {
+    if (!req.user) {
+        console.log(req.user)
+        return res.status(401).json({ error: "You are not signed - in" });
+    }
+    const id = req.user._id;
+    try {
+        const postedJobs = await job.find({ user: id })
+        res.status(201).json({ job: postedJobs })
+    } catch (err) {
+        res.json({ error: "Error registering your task" })
+    }
+}
+
+module.exports = { postJob, getJobs };

@@ -1,13 +1,11 @@
 const express = require("express")
 const jobRouter = express.Router()
-const { postJob } = require("../controllers/jobControllers")
+const { postJob, getJobs } = require("../controllers/jobControllers")
 
 
 jobRouter.post("/", postJob)
 
-jobRouter.get("/", (req, res) => {
-    res.json({ msg: "post jobs easily" })
-})
+jobRouter.get("/", getJobs)
 // jobRouter.patch("/:id", editJob)
 // jobRouter.delete("/:id", deletejob)
 // userRouter.post("/update-profile", updateProfile)
