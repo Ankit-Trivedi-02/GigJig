@@ -6,18 +6,23 @@ import axios from 'axios';
 function RegisterClient() {
 
     const [formData, setFormData] = useState({
-        name: '',
+        name: {
+            firstName: '',
+            lastName: ''
+        },
         username: '',
         email: '',
         password: '',
         phone: '',
         role: 'client',
         location: {
+            country: '',
+            state: '',
             address: '',
             coordinates: ['', ''], // [longitude, latitude]
         },
         profile_image: ''
-    });0
+    });
 
     const navigate = useNavigate();
 
@@ -42,7 +47,24 @@ function RegisterClient() {
                     address: value
                 }
             }));
-        } else {
+        } else if (name === "country") {
+            setFormData(prev => ({
+                ...prev,
+                location: {
+                    ...prev.location,
+                    country: value
+                }
+            }));
+        } else if (name === "state") {
+            setFormData(prev => ({
+                ...prev,
+                location: {
+                    ...prev.location,
+                    state: value
+                }
+            }));
+        }
+        else {
             setFormData(prev => ({
                 ...prev,
                 [name]: value
@@ -115,20 +137,29 @@ function RegisterClient() {
                         required
                     />
                     <input
-                        type="text"
-                        name="name"
-                        placeholder="Full Name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
                         type="Number"
                         name="phone"
                         placeholder="Phone"
                         pattern="\d{10}"
                         title="Phone number must be exactly 10 digits"
                         value={formData.phone}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <input
+                        type="text"
+                        name="country"
+                        placeholder="country"
+                        value={formData.location.country}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="state"
+                        placeholder="state"
+                        value={formData.location.state}
                         onChange={handleChange}
                         required
                     />

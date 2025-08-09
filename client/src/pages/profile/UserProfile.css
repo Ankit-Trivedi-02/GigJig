@@ -72,7 +72,7 @@
 }
 
 .card-header {
-  height: 80px;
+  height: 40px;
   background: linear-gradient(to right, #dceeff, #fff4de);
 }
 
@@ -104,6 +104,10 @@
   padding: 20px;
 }
 
+.full-name {
+  white-space: nowrap;
+}
+
 .input-row {
   display: flex;
   gap: 20px;
@@ -118,6 +122,7 @@
   border-radius: 6px;
   background: #f9f9f9;
 }
+
 .input-group {
   display: flex;
   flex-direction: column;

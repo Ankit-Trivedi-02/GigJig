@@ -10,10 +10,18 @@ const UserProfile = () => {
   const navigate = useNavigate()
   const [canEdit, setcanEdit] = useState(false)
   const [profileData, setProfileData] = useState({
-    name: '',
     email: '',
+    name: {
+      firstName: '',
+      lastName: ''
+    },
     phone: '',
-    location: { address: '' }
+    username: '',
+    location: {
+      country: '',
+      state: '',
+      address: ''
+    }
   });
 
   const getProfileData = async (e) => {
@@ -27,16 +35,23 @@ const UserProfile = () => {
       });
 
       const data = result.data;
+      console.log(data)
 
       if (!data) {
         console.log("No user found");
         return;
       }
       setProfileData({
-        name: data.name,
+        name: {
+          firstName: data.name.firstName,
+          lastName: data.name.lastName
+        },
         email: data.email,
         phone: data.phone,
+        username: data.username,
         location: {
+          country: data.location.country,
+          state: data.location?.state || '',
           address: data.location?.address || ''
         }
       });
@@ -45,7 +60,9 @@ const UserProfile = () => {
     }
   };
 
-  const updateProfileData = async () => {
+  const handleSubmit = async (e) => {
+     e.preventDefault();
+    console.log("I am working")
     if (profileData.phone.length !== 10) {
       alert("Phone must be of 10 digit")
       return
@@ -70,24 +87,30 @@ const UserProfile = () => {
   const handleInputData = (e) => {
     const { name, value } = e.target;
 
-    if (name === "address") {
+    if (name === "firstName" || name === "lastName") {
+      setProfileData(prevState => ({
+        ...prevState,
+        name: {
+          ...prevState.name,
+          [name]: value
+        }
+      }));
+    } else if (name === "address" || name === "state" || name === "country") {
       setProfileData(prevState => ({
         ...prevState,
         location: {
           ...prevState.location,
-          address: value
+          [name]: value
         }
       }));
-      if (name === "firstName") {
-        let name = name + value
-      }
     } else {
       setProfileData(prevState => ({
         ...prevState,
         [name]: value
       }));
     }
-  }
+  };
+
 
 
   useEffect(() => {
@@ -127,24 +150,23 @@ const UserProfile = () => {
               className="avatar"
             />
             <div>
-              <h3>{profileData.name}</h3>
-              <p>{profileData.email}</p>
+              <h3 className="full-name">{profileData.name.firstName} {profileData.name.lastName}</h3>
+              <p>{profileData.username}</p>
             </div>
-            {canEdit ? <button className="edit-btn" type="submit">Save Changes</button> : <div />}
             <button type="button" className="edit-btn" onClick={() => {
               setcanEdit((prev) => !prev)
             }}>{canEdit ? "Quit" : "Edit"}</button>
           </div>
 
-          <div className="form-section">
+          <form onSubmit={handleSubmit} className="form-section">
             <div className="input-row">
               <div className="input-group">
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" name="firstName" placeholder="Your First Name" value={profileData.name} onChange={handleInputData} readOnly={!canEdit} />
+                <input type="text" name="firstName" placeholder="Your First Name" value={profileData.name.firstName} onChange={handleInputData} readOnly={!canEdit} />
               </div>
               <div className="input-group">
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" name="lastName" placeholder="Your Last Name" value={profileData.name} onChange={handleInputData} readOnly={!canEdit} />
+                <input type="text" name="lastName" placeholder="Your Last Name" value={profileData.name.lastName} onChange={handleInputData} readOnly={!canEdit} />
               </div>
             </div>
             <div className="input-row">
@@ -154,14 +176,18 @@ const UserProfile = () => {
               </div>
               <div className="input-group">
                 <label htmlFor="country">Country</label>
-                <input name="country" placeholder="Country" />
+                <input name="country" placeholder="Country"
+                  value={profileData.location.country}
+                  onChange={handleInputData} readOnly={!canEdit} />
               </div>
             </div>
 
             <div className="input-row">
               <div className="input-group">
                 <label htmlFor="state">State</label>
-                <input name="state" placeholder="State" />
+                <input name="state" placeholder="State"
+                  value={profileData.location.state}
+                  onChange={handleInputData} readOnly={!canEdit} />
               </div>
               <div className="input-group">
                 <label htmlFor="address">Address</label>
@@ -180,12 +206,12 @@ const UserProfile = () => {
                 <FaEnvelope />
                 <div>
                   <p>{profileData.email}</p>
-                  <small>1 month ago</small>
+                  
                 </div>
+                 {canEdit ? <button className="edit-btn" type="submit">Save Changes</button> : <div />}
               </div>
-              <button className="add-email">+Add Email Address</button>
             </div>
-          </div>
+          </form>
         </div>
       </main>
     </div>

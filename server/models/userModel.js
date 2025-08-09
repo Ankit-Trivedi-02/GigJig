@@ -2,8 +2,12 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
     name: {
-        type: String,
-        require: true
+        firstName: {
+            type: String,
+        },
+        lastName: {
+            type: String,
+        }
     },
     username: {
         type: String,
@@ -28,7 +32,9 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     location: {
-        address: String,
+        country: { type: String, require: true, default: "india" },
+        state: { type: String },
+        address: { type: String },
         coordinates: {
             type: [Number], // [longitude, latitude]
             index: '2dsphere',

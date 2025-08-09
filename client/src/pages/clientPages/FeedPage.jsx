@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './FeedPage.css';
 import Navbar from '../../components/navbar/Navbar';
@@ -7,23 +7,20 @@ import PostJob from '../../components/PostJob/PostJob';
 import GigFinder from '../../components/GigFinder/GigFinder';
 import UserJobs from '../../components/UserJobs/UserJobs';
 
-
-
 function FeedPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const redirectRoute = () => {
-    navigate("/profile")
-  }
+    navigate('/profile');
+  };
 
   return (
     <div className="feed-container">
       <Navbar />
       <div className="feed-content">
-        <div className="feed-left"  >
+        <div className="feed-left">
           <ProfileCard onClick={redirectRoute} />
           <GigFinder />
-
         </div>
         <div className="feed-right">
           <PostJob />
