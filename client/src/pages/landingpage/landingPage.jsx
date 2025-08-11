@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './landingPage.css'
 import { NavLink } from 'react-router-dom'
 import happyMan from './happyMan.png'
-import gig from './car-.png'
+import gig from './woman.png'
 
 function LandingPage() {
 
@@ -84,13 +84,41 @@ function LandingPage() {
 
 
             <section id="services" className="scroll-section">
-                <h2>Services</h2>
-                <p>This section describes the services you offer.</p>
+                <div className="pricing-container">
+                    <h1>Post Jobs, Find Work – <mark>The Marketplace for Gig Workers</mark></h1>
+
+                    <div className="pricing-plans">
+                        <div className="pricing-plan client">
+                            <div className="plan-name">Client</div>
+                            <div className="plan-price">Post<span> Jobs</span></div>
+                            <div className="plan-summary">The Perfect Solution for Clients to Find and Hire Skilled Gig Workers.</div>
+                            <a className="cta-button" href="/client/login">Get Started</a>
+                        </div>
+
+                        <div className="pricing-plan corporation">
+                            <div className="plan-name">Corporation</div>
+                            <div className="plan-price">Hire<span> at Scale</span></div>
+                            <div className="plan-summary">Streamline Workforce Hiring with Access to a Large Pool of Verified Gig Workers for Ongoing or Bulk Projects.</div>
+                            <a className="cta-button" href="/corporation/login">Get Started</a>
+                        </div>
+
+                        <div className="pricing-plan gigworker">
+                            <div className="plan-name">Gig Worker</div>
+                            <div className="plan-price">Apply<span> Jobs</span></div>
+                            <div className="plan-summary">Your Gateway to Finding and Joining Exciting Gigs with Top Employers.</div>
+                            <a className="cta-button" href="/gigworker/login">Get Started</a>
+                        </div>
+                    </div>
+                </div>
             </section>
 
+            
             <section id="developers" className="scroll-section">
-                <h2>Developers</h2>
-                <p>Information for developers and collaborators.</p>
+                <div className="rainbow-box-container">
+                    <div className="rainbow-box">
+                        <p>This box has an animated RGB outline!</p>
+                    </div>
+                </div>
             </section>
 
             <section id="careers" className="scroll-section">

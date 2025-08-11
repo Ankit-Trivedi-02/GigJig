@@ -334,3 +334,175 @@ html {
     max-width: 100%;
   }
 }
+
+
+/* General Layout */
+.pricing-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 60px;
+}
+
+/* Toggle Buttons */
+.pricing-plan-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.toggle-option {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.toggle-option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Pricing Plans */
+.pricing-container {
+  text-align: center;
+  /* padding: 60px 20px; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* background-color: #f7f9fc; */
+}
+
+.pricing-container h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.pricing-container mark {
+  background-color: #ffd54f;
+  padding: 0 6px;
+  border-radius: 4px;
+  color: #000;
+}
+
+.pricing-plans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.pricing-plan {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-plan:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.plan-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.plan-price {
+  margin: 15px 0;
+  font-size: 20px;
+  color: #34495e;
+}
+
+.plan-price span {
+  color: #7f8c8d;
+  font-size: 16px;
+}
+
+.plan-summary {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #2980b9;
+}
+
+.rainbow-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.rainbow-box {
+    position: relative;
+    padding: 40px;
+    background-color: #222;
+    color: #fff;
+    border-radius: 12px;
+    z-index: 1;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.rainbow-box::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: conic-gradient(
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet,
+        red
+    );
+    z-index: -1;
+    animation: rotate 4s linear infinite;
+    border-radius: 15px;
+}
+
+.rainbow-box::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    background-color: #222;
+    border-radius: 9px;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
