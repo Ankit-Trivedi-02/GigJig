@@ -6,10 +6,9 @@ async function registerUser(req, res) {
         return res.status(400).json({ message: "All fields are required" })
     }
 
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
 
-    const role = "client"
-    if (!username || !email || !password) {
+    if (!username || !email || !password || !role) {
         return res.status(400).json({ message: "All fields are required" })
     }
     const isDoubleUserName = await User.findOne({ username })

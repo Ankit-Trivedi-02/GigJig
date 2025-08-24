@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import './PostJob.css';
-import { NavLink, useNavigate } from 'react-router-dom';
-import axios from "axios"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./JobPostForm.css";
 
-function PostJob() {
-  const [showForm, setShowForm] = useState(false);
+const JobPostForm = () => {
   const [formData, setFormData] = useState({
     title: '',
     specification: '',
@@ -13,6 +12,7 @@ function PostJob() {
     penny: '',
     dueDate: ''
   });
+
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -47,23 +47,20 @@ function PostJob() {
           },
           withCredentials: true
         });
-        navigate("/");
-      } catch (err) { console.log({ error: "error" }) }
-      // You can send this to your backend here
+        navigate("/feed");
+      } catch (err) {
+        console.log({ error: "error" });
+      }
     }
   };
 
-
   return (
-    <div className="post-job-card">
-      <button onClick={() => setShowForm(!showForm)} className="post-button">
-        {showForm ? "Cancel" : "Post a Job"}
-      </button>
-      {showForm && (
-        <form className="form-container" onSubmit={handleSubmit}>
-          <h2>Job Description</h2>
+    <div className="job-form-wrapper">
+      <form className="form-container" onSubmit={handleSubmit}>
+        <h2 className="form-title">Post a Job</h2>
 
-          <label>Title*</label>
+        <div className="input-group">
+          <label>Title<span>*</span></label>
           <input
             type="text"
             name="title"
@@ -71,8 +68,10 @@ function PostJob() {
             onChange={handleChange}
           />
           {errors.title && <span className="error">{errors.title}</span>}
+        </div>
 
-          <label>Specification*</label>
+        <div className="input-group">
+          <label>Specification<span>*</span></label>
           <input
             type="text"
             name="specification"
@@ -80,8 +79,10 @@ function PostJob() {
             onChange={handleChange}
           />
           {errors.specification && <span className="error">{errors.specification}</span>}
+        </div>
 
-          <label>Category*</label>
+        <div className="input-group">
+          <label>Category<span>*</span></label>
           <input
             type="text"
             name="categeory"
@@ -89,15 +90,20 @@ function PostJob() {
             onChange={handleChange}
           />
           {errors.categeory && <span className="error">{errors.categeory}</span>}
+        </div>
 
+        <div className="input-group">
           <label>Description</label>
           <textarea
             name="description"
+            rows="4"
             value={formData.description}
             onChange={handleChange}
           />
+        </div>
 
-          <label>Penny*</label>
+        <div className="input-group">
+          <label>Penny<span>*</span></label>
           <input
             type="number"
             name="penny"
@@ -105,7 +111,9 @@ function PostJob() {
             onChange={handleChange}
           />
           {errors.penny && <span className="error">{errors.penny}</span>}
+        </div>
 
+        <div className="input-group">
           <label>Due Date</label>
           <input
             type="date"
@@ -113,12 +121,12 @@ function PostJob() {
             value={formData.dueDate}
             onChange={handleChange}
           />
+        </div>
 
-          <button type="submit">Submit</button>
-        </form>
-      )}
+        <button type="submit" className="submit-btn">Submit</button>
+      </form>
     </div>
   );
-}
+};
 
-export default PostJob;
+export default JobPostForm;

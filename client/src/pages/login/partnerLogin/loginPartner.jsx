@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './loginClient.css';
+import './loginPartner.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function LoginClient() {
+function LoginPartner() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -24,10 +24,10 @@ function LoginClient() {
       const result = await axios.post("http://localhost:3000/auth/client/login", formData)
       console.log(result);
       if (result.status === 200) {
-        const token = result.data.token; 
+        const token = result.data.token; // adjust this key if your backend uses a different name
         if (token) {
-          localStorage.setItem("token", token); 
-          navigate("/feed"); 
+          localStorage.setItem("token", token); // ✅ Store token
+          navigate("/feed"); // ✅ Navigate after storing
         } else {
           console.error("Token not found in response");
         }
@@ -38,7 +38,7 @@ function LoginClient() {
 
   return (
     <div className="login-container">
-      <h2>Client Login</h2>
+      <h2>Partner Login</h2>
       <form onSubmit={handleSubmit} className="login-form">
 
         <input
@@ -62,10 +62,10 @@ function LoginClient() {
         <button type="submit">Login</button>
       </form>
       <p className="login-link">
-        Dont have an account? <NavLink to={"/client/register"}>Register</NavLink>
+        Dont have an account? <NavLink to={"/partner/register"}>Register</NavLink>
       </p>
     </div>
   );
 }
 
-export default LoginClient;
+export default LoginPartner;

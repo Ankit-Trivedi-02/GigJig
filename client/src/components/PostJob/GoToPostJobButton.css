@@ -1,0 +1,24 @@
+.go-to-job-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+}
+
+.go-to-job-btn {
+  background: linear-gradient(135deg, #4d8eff, #6fa8ff);
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.go-to-job-btn:hover {
+  background: linear-gradient(135deg, #3a73d6, #5f98ff);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,92 @@
+.footer-container {
+  background: #e4efff;
+  color: #333;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  border-top: 1px solid #d1dfff;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.footer-brand h2 {
+  color: #4d8eff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  color: #555;
+  font-size: 14px;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #4d8eff;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin: 8px 0;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #4d8eff;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.social-icons a {
+  color: #4d8eff;
+  margin-right: 12px;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #d1dfff;
+  padding-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+
+  .social-icons a {
+    margin-right: 10px;
+  }
+}

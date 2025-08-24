@@ -53,6 +53,33 @@ async function updateProfile(req, res) {
     }
 }
 
+async function deleteUser(req, res) {
+    const id = req.params.id;
+    try {
+        const user = await User.deleteOne({ _id: id })
+        return res.json(user)
+    } catch (error) {
+        return res.json({ error: error })
+    }
+}
+
+async function getUserRole(req, res) {
+    const email = req.user.email;
+    if (!email) {
+        return res.json({ msg: "no login session detected" })
+    }
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.json({ user: "404" })
+        }
+        const role = user.role;
+        return res.json(role)
+    } catch (error) {
+        return res.json({ msg: "server error" })
+    }
+
+}
 
 
-module.exports = { getUser, updateProfile }
+module.exports = { getUser, updateProfile, getUserRole, deleteUser }

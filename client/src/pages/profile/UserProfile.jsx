@@ -16,6 +16,7 @@ const UserProfile = () => {
       lastName: ''
     },
     phone: '',
+    role: '',
     username: '',
     location: {
       country: '',
@@ -35,7 +36,6 @@ const UserProfile = () => {
       });
 
       const data = result.data;
-      console.log(data)
 
       if (!data) {
         console.log("No user found");
@@ -48,6 +48,7 @@ const UserProfile = () => {
         },
         email: data.email,
         phone: data.phone,
+        role: data.role,
         username: data.username,
         location: {
           country: data.location.country,
@@ -162,11 +163,11 @@ const UserProfile = () => {
             <div className="input-row">
               <div className="input-group">
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" name="firstName" placeholder="Your First Name" value={profileData.name.firstName} onChange={handleInputData} readOnly={!canEdit} />
+                <input type="text" name="firstName" placeholder="Your First Name" value={profileData.name.firstName || ""} onChange={handleInputData} readOnly={!canEdit} />
               </div>
               <div className="input-group">
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" name="lastName" placeholder="Your Last Name" value={profileData.name.lastName} onChange={handleInputData} readOnly={!canEdit} />
+                <input type="text" name="lastName" placeholder="Your Last Name" value={profileData.name.lastName || ""} onChange={handleInputData} readOnly={!canEdit} />
               </div>
             </div>
             <div className="input-row">
@@ -197,7 +198,7 @@ const UserProfile = () => {
 
             <div className="input-row">
               <select name="gender"><option>Gender</option><option>Male</option><option>Female</option><option>Others</option></select>
-              <input type="text" value={"Client"} readOnly />
+              <input type="text" value={profileData.role} readOnly />
             </div>
 
             <div className="email-section">

@@ -3,6 +3,7 @@ import './landingPage.css'
 import { NavLink } from 'react-router-dom'
 import happyMan from './happyMan.png'
 import gig from './woman.png'
+import Footer from '../../components/footer/footer'
 
 function LandingPage() {
 
@@ -39,7 +40,7 @@ function LandingPage() {
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas cumque officia, libero perferendis velit, officiis at ex corrupti excepturi, quaerat odio itaque omnis. Inventore quo similique sint dicta animi minima, dolorum pariatur labore ex totam neque dolores nam placeat laborum perferendis ullam ut non repellat excepturi quaerat aut quas porro?</p>
                 <div className="sign-in-button">
                     <NavLink to={"/client/login"}><button className="sign">Client</button></NavLink>
-                    <button className="sign">Partner</button>
+                    <NavLink to={"/partner/login"}><button className="sign">Partner</button></NavLink>
                 </div>
             </div>
 
@@ -82,8 +83,8 @@ function LandingPage() {
 
 
 
-
             <section id="services" className="scroll-section">
+                <h1>SERVICES</h1>
                 <div className="pricing-container">
                     <h1>Post Jobs, Find Work – <mark>The Marketplace for Gig Workers</mark></h1>
 
@@ -99,14 +100,14 @@ function LandingPage() {
                             <div className="plan-name">Corporation</div>
                             <div className="plan-price">Hire<span> at Scale</span></div>
                             <div className="plan-summary">Streamline Workforce Hiring with Access to a Large Pool of Verified Gig Workers for Ongoing or Bulk Projects.</div>
-                            <a className="cta-button" href="/corporation/login">Get Started</a>
+                            <a className="cta-button" href="/">Get Started</a>
                         </div>
 
                         <div className="pricing-plan gigworker">
                             <div className="plan-name">Gig Worker</div>
                             <div className="plan-price">Apply<span> Jobs</span></div>
                             <div className="plan-summary">Your Gateway to Finding and Joining Exciting Gigs with Top Employers.</div>
-                            <a className="cta-button" href="/gigworker/login">Get Started</a>
+                            <a className="cta-button" href="/">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -125,6 +126,7 @@ function LandingPage() {
                 <h2>Careers</h2>
                 <p>Explore career opportunities with us.</p>
             </section>
+            <Footer/>
         </>
     )
 }
