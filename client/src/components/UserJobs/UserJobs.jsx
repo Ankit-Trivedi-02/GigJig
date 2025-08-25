@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './UserJobs.css';
 import axios from 'axios';
 
 const UserJobs = () => {
     const [userJobs, setUserJobs] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch jobs from the backend
@@ -29,6 +32,10 @@ const UserJobs = () => {
         fetchJobs();
     }, []);
 
+    const handelEditJob = (id) => {
+         navigate(`/edit-job/${id}`);
+    }
+
     return (
         <div className="user-jobs-container">
             <h2>Your Posted Jobs</h2>
@@ -39,10 +46,10 @@ const UserJobs = () => {
                 <p>No jobs posted yet.</p>
             ) : (
                 userJobs.map(job => (
-                    <div key={job._id} className="job-card">
+                    <div key={job._id} className="job-card" onClick={() => handelEditJob(job._id)}>
                         <h3>{job.title}</h3>
                         <p><strong>Specification:</strong> {job.specification}</p>
-                        <p><strong>Category:</strong> {job.categeory}</p>
+                        <p><strong>Category:</strong> {job.category}</p>
                         {job.description && <p><strong>Description:</strong> {job.description}</p>}
                         <p><strong>Budget:</strong> {job.penny} pennies</p>
                         {job.dueDate && job.dueDate !== '0002-02-22T00:00:00.000Z' && (

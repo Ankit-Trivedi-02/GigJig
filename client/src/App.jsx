@@ -11,6 +11,7 @@ import JobPostForm from './pages/Job-posting/JobPostForm';
 import LoginPartner from './pages/login/partnerLogin/loginPartner';
 import RegisterPartner from './pages/register/partnerRegister/registerPartner';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import EditJob from './pages/EditJob/EditJob';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
         <Route path='/feed' element={<ProtectedRoutes><FeedPage /></ProtectedRoutes>}></Route>
         <Route path='/profile' element={<ProtectedRoutes><UserProfile /></ProtectedRoutes>}></Route>
         <Route path='/post-job' element={<JobPostForm />}></Route>
+        <Route path="/edit-job/:id" element={<EditJob />} />
         <Route path="*" element={<NotFoundPage />} />
 
       </Routes>

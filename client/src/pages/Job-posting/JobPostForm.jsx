@@ -7,7 +7,7 @@ const JobPostForm = () => {
   const [formData, setFormData] = useState({
     title: '',
     specification: '',
-    categeory: '',
+    category: '',  // ✅ fixed: lowercase and consistent
     description: '',
     penny: '',
     dueDate: ''
@@ -28,7 +28,7 @@ const JobPostForm = () => {
     const newErrors = {};
     if (!formData.title) newErrors.title = 'Title is required';
     if (!formData.specification) newErrors.specification = 'Specification is required';
-    if (!formData.categeory) newErrors.categeory = 'Category is required';
+    if (!formData.category) newErrors.category = 'Category is required';
     if (!formData.penny) newErrors.penny = 'Penny is required';
     else if (isNaN(formData.penny)) newErrors.penny = 'Penny must be a number';
     return newErrors;
@@ -41,7 +41,7 @@ const JobPostForm = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const token = localStorage.getItem("token");
-        const result = await axios.post("http://localhost:3000/job", formData, {
+        await axios.post("http://localhost:3000/job", formData, {
           headers: {
             Authorization: `Bearer ${token}`
           },
@@ -49,7 +49,7 @@ const JobPostForm = () => {
         });
         navigate("/feed");
       } catch (err) {
-        console.log({ error: "error" });
+        console.log({ error: err });
       }
     }
   };
@@ -85,11 +85,11 @@ const JobPostForm = () => {
           <label>Category<span>*</span></label>
           <input
             type="text"
-            name="categeory"
-            value={formData.categeory}
+            name="category"  
+            value={formData.category}
             onChange={handleChange}
           />
-          {errors.categeory && <span className="error">{errors.categeory}</span>}
+          {errors.category && <span className="error">{errors.category}</span>}
         </div>
 
         <div className="input-group">

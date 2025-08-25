@@ -4,7 +4,7 @@ const User = require("./userModel")
 const jobSchema = new mongoose.Schema({
     title: { type: String, require: true },
     specification: { type: String, require: true },
-    categeory: { type: String, require: true },
+    category: { type: String, require: true },
     description: { type: String },
     penny: { type: Number, require: true },
     dueDate: { type: Date },
